@@ -10,13 +10,13 @@ app = FastAPI()
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", api_key=os.getenv("GEMINI_API_KEY"))
 
-class QuestionList(BaseModel):
-    questions: list[Question] = Field(description="Lista de questões solicitadas pelo usuario")
-    difficulty: int = Field(description="Dificuldade solicitada pelo usuario")
-
 class Question(BaseModel):
     code: str = Field(description="Codigo da questão")
     output: str = Field(description="Saida prevista do codigo gerado pela questão")
+
+class QuestionList(BaseModel):
+    questions: list[Question] = Field(description="Lista de questões solicitadas pelo usuario")
+    difficulty: int = Field(description="Dificuldade solicitada pelo usuario")
 
 llm = llm.with_structured_output(QuestionList)
 
