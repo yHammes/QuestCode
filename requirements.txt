@@ -1,3 +1,4 @@
 langchain-google-genai
 fastapi
-dotenv
+langchain-core
+python-dotenv

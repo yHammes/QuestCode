@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-import os, json
+import os
 
 env = load_dotenv()
 app = FastAPI()
@@ -36,5 +36,4 @@ def main(question_amount: int, difficulty: str):
                 {"type": "text", "text": f"Gere {question_amount} codigos com a dificuldade: {difficulty}"}
             ])
     ])
-    print(question)
     return {"response": question, "difficulty": difficulty}
