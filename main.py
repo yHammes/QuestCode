@@ -38,5 +38,3 @@ def main(question_amount: int, difficulty: str):
     ])
     print(question)
     return {"response": question, "difficulty": difficulty}
-
-print(main(question_amount= 10, difficulty="dificil"))
