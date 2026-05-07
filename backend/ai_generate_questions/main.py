@@ -39,4 +39,4 @@ def main(question_amount: int, difficulty: str):
     
     return {"response": question, "difficulty": difficulty}
 
-print("System loaded!")
+print("System loaded!!")
