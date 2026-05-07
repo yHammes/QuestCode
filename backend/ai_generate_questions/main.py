@@ -36,4 +36,7 @@ def main(question_amount: int, difficulty: str):
                 {"type": "text", "text": f"Gere {question_amount} codigos com a dificuldade: {difficulty}"}
             ])
     ])
+    
     return {"response": question, "difficulty": difficulty}
+
+print("System loaded!!")
