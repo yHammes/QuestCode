@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/ai_generate_questions/main.py",
+      "src": "./backend/ai_generate_questions/main.py",
       "use": "@vercel/python"
     }
   ],
