@@ -1,0 +1,34 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #030b1c;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+
+}
+
+#player-info {
+    color: #445366;
+}
+
+.progress{
+    background-color: #000412;
+    border: #445366 solid;
+    
+}
+
+.form-control{
+    color: #445366;
+    background-color: #030b1c;
+}
+
+.card-header{
+    border-bottom: #445366 solid;
+}
+.card{
+    border: #445366 solid;
+    color: #445366;
+    background-color: #000412;
+}
+
