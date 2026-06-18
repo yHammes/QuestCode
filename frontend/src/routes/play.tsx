@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { CodeBlock } from "@/game/CodeBlock";
 import { QUESTIONS, type Question } from "@/game/questions";
+import { fetchQuestions } from "@/game/api";
 import { loadSession, saveSession } from "@/game/store";
 
 export const Route = createFileRoute("/play")({
@@ -52,15 +53,28 @@ export function clearRound() {
 function PlayPage() {
   const navigate = useNavigate();
   const [session] = useState(() => loadSession());
-
-  const questions = useMemo<Question[]>(() => {
-    if (!session) return [];
+  const [questions, setQuestions] = useState<Question[]>(() => {
     const cached = loadRound();
-    if (cached && cached.length === 10) return cached;
-    const fresh = shuffle(QUESTIONS[session.difficulty]).slice(0, 10);
-    saveRound(fresh);
-    return fresh;
-  }, [session?.difficulty]);
+    return cached && cached.length === 10 ? cached : [];
+  });
+  const [loadingQuestions, setLoadingQuestions] = useState(questions.length === 0);
+
+  useEffect(() => {
+    if (!session || questions.length > 0) return;
+
+    fetchQuestions(session.difficulty, 10)
+      .then((qs) => {
+        if (qs.length < 10) throw new Error("Not enough questions from API");
+        saveRound(qs);
+        setQuestions(qs);
+      })
+      .catch(() => {
+        const fallback = shuffle(QUESTIONS[session.difficulty]).slice(0, 10);
+        saveRound(fallback);
+        setQuestions(fallback);
+      })
+      .finally(() => setLoadingQuestions(false));
+  }, []);
 
   const [idx, setIdx] = useState(() => session?.currentIndex ?? 0);
   const [score, setScore] = useState(() => session?.score ?? 0);
@@ -76,7 +90,16 @@ function PlayPage() {
     saveSession({ ...session, score, currentIndex: idx });
   }, [score, idx]);
 
-  if (!session || questions.length === 0) return null;
+  if (!session) return null;
+  if (loadingQuestions || questions.length === 0) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <span className="font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground animate-pulse">
+          Gerando questões…
+        </span>
+      </main>
+    );
+  }
 
   const q = questions[idx];
   const total = questions.length;

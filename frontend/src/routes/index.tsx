@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loadSession, saveSession } from "@/game/store";
+import { clearRound } from "./play";
 import type { Difficulty } from "@/game/questions";
 
 export const Route = createFileRoute("/")({
@@ -31,6 +32,7 @@ function StartMenu() {
     setErrors(errs);
     if (Object.keys(errs).length) return;
 
+    clearRound();
     saveSession({ name: name.trim(), difficulty: difficulty as Difficulty, score: 0 });
     navigate({ to: "/play" });
   }
