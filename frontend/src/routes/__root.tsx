@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,49 +23,6 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CodeQuest" },
-      { name: "description", content: "Code Predictor Playground is a web-based game for practicing programming logic by predicting code outputs." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "CodeQuest" },
-      { property: "og:description", content: "Code Predictor Playground is a web-based game for practicing programming logic by predicting code outputs." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "CodeQuest" },
-      { name: "twitter:description", content: "Code Predictor Playground is a web-based game for practicing programming logic by predicting code outputs." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/31230110-c6c8-4e9f-8a24-b90856e90bd8/id-preview-3551f9a1--1e7626b5-3c9c-48f8-938e-9b2f6ec5bbc9.lovable.app-1778024891682.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/31230110-c6c8-4e9f-8a24-b90856e90bd8/id-preview-3551f9a1--1e7626b5-3c9c-48f8-938e-9b2f6ec5bbc9.lovable.app-1778024891682.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
+  component: () => <Outlet />,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-function RootComponent() {
-  return <Outlet />;
-}
