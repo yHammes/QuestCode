@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results Screen</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: #020b1f;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container{
+      width: 600px;
+      text-align: center;
+    }
+
+    .small-title{
+      color: #6d7b9a;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    .name{
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #cfd7e6;
+    }
+
+    .score{
+      font-size: 90px;
+      font-weight: bold;
+      color: #dfe8f5;
+    }
+
+    .score span{
+      font-size: 40px;
+      color: #7c8fb3;
+    }
+
+    .accuracy{
+      color: #3ca7ff;
+      letter-spacing: 3px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .message{
+      margin: 50px 0 20px;
+      font-size: 20px;
+      color: #dfe8f5;
+    }
+
+    .difficulty{
+      color: #6d7b9a;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 50px;
+    }
+
+    .top3-title{
+      color: #6d7b9a;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    .podium{
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .place{
+      width: 180px;
+      background: #081b42;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #93a5c8;
+      letter-spacing: 2px;
+    }
+
+    .second{
+      height: 100px;
+    }
+
+    .first{
+      height: 140px;
+      background: #3798ea;
+      color: white;
+    }
+
+    .third{
+      height: 70px;
+    }
+
+    .place span{
+      position: absolute;
+      top: -35px;
+      font-size: 40px;
+      color: white;
+    }
+
+    .ranking{
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+    }
+
+    .ranking td{
+      border-top: 1px solid #1c2d52;
+      padding: 15px;
+      color: #9ba8c5;
+    }
+
+    .ranking tr:last-child td{
+      border-bottom: 1px solid #1c2d52;
+    }
+
+    .btn{
+      width: 100%;
+      padding: 18px;
+      background: #3798ea;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover{
+      background: #4aa5f3;
+    }
+
+    .back{
+      color: #7b89a7;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="small-title">03 — RESULTS</div>
+
+    <div class="name">Joao</div>
+
+    <div class="score">
+      0 <span>/ 10</span>
+    </div>
+
+    <div class="accuracy">0% ACCURACY</div>
+
+    <div class="message">
+      Every developer starts here. Try Easy mode.
+    </div>
+
+    <div class="difficulty">
+      DIFFICULTY — MEDIUM
+    </div>
+
+    <div class="top3-title">
+      YOUR TOP 3
+    </div>
+
+    <div class="podium">
+
+      <div class="place second">
+        <span>—</span>
+        2ND
+      </div>
+
+      <div class="place first">
+        <span>0</span>
+        1ST
+      </div>
+
+      <div class="place third">
+        <span>—</span>
+        3RD
+      </div>
+
+    </div>
+
+    <table class="ranking">
+      <tr>
+        <td>#1</td>
+        <td>medium</td>
+        <td>0/10</td>
+      </tr>
+
+      <tr>
+        <td>#2</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+
+      <tr>
+        <td>#3</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <button class="btn">Play again</button>
+
+    <a href="#" class="back">← Back to menu</a>
+
+  </div>
+
+</body>
+</html>
