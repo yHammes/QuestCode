@@ -12,12 +12,6 @@ import {
 import { clearRound } from "./play";
 
 export const Route = createFileRoute("/results")({
-  head: () => ({
-    meta: [
-      { title: "Resultados — CodeQuest" },
-      { name: "description", content: "Veja sua pontuação no CodeQuest." },
-    ],
-  }),
   component: ResultsPage,
 });
 

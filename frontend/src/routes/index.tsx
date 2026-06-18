@@ -7,14 +7,6 @@ import { loadSession, saveSession } from "@/game/store";
 import type { Difficulty } from "@/game/questions";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "CodeQuest — Preveja a Saída" },
-      { name: "description", content: "Aprimore sua lógica de programação prevendo saídas de código em desafios de JavaScript e Python." },
-      { property: "og:title", content: "CodeQuest — Preveja a Saída" },
-      { property: "og:description", content: "Um jogo minimalista para praticar lógica de programação." },
-    ],
-  }),
   component: StartMenu,
 });
 

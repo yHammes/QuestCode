@@ -18,12 +18,6 @@ import { QUESTIONS, type Question } from "@/game/questions";
 import { loadSession, saveSession } from "@/game/store";
 
 export const Route = createFileRoute("/play")({
-  head: () => ({
-    meta: [
-      { title: "Jogando — CodeQuest" },
-      { name: "description", content: "Preveja a saída de cada trecho de código." },
-    ],
-  }),
   component: PlayPage,
 });
 
